@@ -40,6 +40,11 @@ body {
     overflow-y: auto;
     width: 100%;
     min-height: 0;
+    margin-bottom: 5px;
+
+    display: flex;
+    justify-content: center; /* centro horizontal */
+    align-items: center;     /* centro vertical */
 }
 
 .sidebar-note {
@@ -71,3 +76,13 @@ body {
     overflow-y: auto;
 }
 
+.lado-esquerdo button {
+    width: 100%;
+    margin: 2px;
+}
+
+.sidebar-note {
+    text-align: center;
+    font-size: 12px;
+    margin: 0;
+}
