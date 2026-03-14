@@ -11,9 +11,9 @@
 
 <body>
 
-    <div class="window" style="width: 500px; height: 400px;">
+    <div class="window card-window">
         <div class="title-bar">
-            <div class="title-bar-text" style="margin-left: 8px;">www.dopycat.com</div>
+            <div class="title-bar-text title-bar-text-custom">www.dopycat.com</div>
             <div class="title-bar-controls">
                 <button aria-label="Minimize"></button>
                 <button aria-label="Maximize"></button>
@@ -21,56 +21,59 @@
             </div>
         </div>
 
-        <div class="window-body" style="display:flex; gap:10px; height: calc(100% - 30px);">
+        <div class="window-body">
 
-    <!-- esquerda -->
-    <div style="width:180px; display:flex; flex-direction:column; align-items:center;">
-        <img src="img/pfp.jpg" style="width:180px; border:1px solid black;">
-        <p style="text-align:center; font-size:12px; margin-top:5px;">
-            scroll to read →<br>
-            welcome to my crd!<br>
-            <a href="#" style="text-decoration:none; color:pink;">q&a twt insta</a>
-        </p>
-    </div>
+            <!-- esquerda -->
+            <div class="lado-esquerdo">
+                <img src="img/pfp.jpg" class="profile-img">
+                <div class="sunken-panel panel-left">
+                    <p class="sidebar-note">
+                        scroll to read →<br>
+                        welcome to my crd!<br>
+                        <a href="#" style="text-decoration:none; color:pink;">q&a twt insta</a>
+                    </p>
+                </div>
 
-    <!-- direita -->
-    <div class="table-view" style="flex:1; display:flex; flex-direction:column; font-size:12px;">
+            </div>
 
-        <div class="table-view__row">
-            <strong>@DopyCat</strong>
+            <!-- direita -->
+            <div class="lado-direito">
+
+                <div class="table-view__row row-head">
+                    <strong>@DopyCat</strong>
+                </div>
+
+                <div class="table-view__row row-subtitle">
+                    last updated on 07/27/2023
+                </div>
+
+                <div class="sunken-panel panel-right">
+
+                    <div class="table-view__row">
+                        hi my name is <span style="color:pink;">Dopy Cat</span>
+                    </div>
+
+                    <div class="table-view__row">
+                        <span style="color:pink;">before you follow</span> info info info
+                    </div>
+
+                    <div class="table-view__row">
+                        info info info info info
+                    </div>
+
+                    <div class="table-view__row">
+                        info info info info info
+                    </div>
+
+                    <div class="table-view__row">
+                        info info info info info
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
-
-        <div class="table-view__row">
-            last updated on 07/27/2023
-        </div>
-
-        <div class="sunken-panel" style="flex:1; overflow-y:auto;">
-
-            <div class="table-view__row">
-                hi my name is <span style="color:pink;">Dopy Cat</span>
-            </div>
-
-            <div class="table-view__row">
-                <span style="color:pink;">before you follow</span> info info info
-            </div>
-
-            <div class="table-view__row">
-                info info info info info
-            </div>
-
-            <div class="table-view__row">
-                info info info info info
-            </div>
-
-            <div class="table-view__row">
-                info info info info info
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
 
 </body>
 
