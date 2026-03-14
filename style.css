@@ -81,8 +81,33 @@ body {
     margin: 2px;
 }
 
+.btn-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.platform-icon {
+    display: inline-flex;
+    width: 20px;
+    height: 20px;
+    font-size: 16px;
+    justify-content: center;
+    align-items: center;
+}
+
 .sidebar-note {
     text-align: center;
-    font-size: 12px;
+    font-size: 14px;
     margin: 0;
 }
+
+/* aumentar um pouco todos os textos, exceto @DopyCat (row-head), last updated (row-subtitle) e botões */
+.window-body,
+.lado-direito .panel-right,
+.lado-esquerdo .panel-left {
+    font-size: 14px;
+}
+
+
