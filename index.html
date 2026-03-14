@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/98.css">
+    <link rel="stylesheet" href="style.css">
+    <title>DopyCat</title>
+</head>
+
+<body>
+
+    <div class="window" style="width: 500px; height: 400px;">
+        <div class="title-bar">
+            <div class="title-bar-text">www.dopycat.com</div>
+            <div class="title-bar-controls">
+                <button aria-label="Minimize"></button>
+                <button aria-label="Maximize"></button>
+                <button aria-label="Close"></button>
+            </div>
+        </div>
+
+        <div class="window-body" style="display:flex; gap:10px; height: calc(100% - 30px);">
+            <!-- Lado esquerdo: imagem + links -->
+            <div style="width: 180px; display:flex; flex-direction:column; align-items:center;">
+                <img src="img/pfp.jpg" alt="Perfil" style="width:180px; border:1px solid black;">
+                <p style="text-align:center; font-size:12px; margin-top:5px;">
+                    scroll to read →<br>
+                    welcome to my crd!<br>
+                    <a href="#" style="text-decoration:none; color:pink;">q&a twt insta</a>
+                </p>
+            </div>
+
+            <!-- Lado direito: table-view com scroll clássico 98.css -->
+            <div class="table-view" style="flex:1; height:100%; overflow-y:auto; font-size:12px; padding:5px;">
+                <div class="table-view__row">
+                    <strong>@username</strong>
+                </div>
+                <div class="table-view__row">
+                    last updated on 07/27/2023
+                </div>
+                <div class="table-view__row">
+                    hi, my name is <span style="color:pink;">name</span>, but i also go by <span style="color:pink;">nickname</span>! 17 she/love sasian
+                </div>
+                <div class="table-view__row">
+                    <span style="color:pink;">before you follow</span> add your byf info here info info info info info info info info info info info info
+                </div>
+                <div class="table-view__row">
+                    info info info info info info info info info info info info info info info
+                </div>
+                <div class="table-view__row">
+                    info info info info info info info info info info info info info info info
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
