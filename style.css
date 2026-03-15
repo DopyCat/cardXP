@@ -1,16 +1,20 @@
-/* HTML e Body */
+/* ==========================
+   HTML e Body
+========================== */
 html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    min-height: 100vh;
+    min-height: 100dvh;
 }
 
 /* Background */
 body {
     background: url('img/wpp.jpg') no-repeat center center;
     background-size: cover;
+    background-attachment: fixed;
 }
+
 
 /* ==========================
    Janelas e Cards
@@ -19,8 +23,8 @@ body {
     width: 500px;
     height: 400px;
     position: absolute;
-    top: 50px;
-    left: 50px;
+    top: 10px;
+    left: 10px;
 }
 
 .card-window.maximized {
@@ -43,6 +47,81 @@ body {
 
 .title-bar-text-custom.dragging {
     cursor: grabbing;
+}
+
+
+/* ==========================
+   RESPONSIVO MOBILE
+========================== */
+
+@media (max-width: 700px) {
+
+    .card-window {
+        position: fixed;
+        width: 50%;
+        height: auto;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        margin: 0;
+    }
+
+    .card-window.maximized {
+        position: fixed;
+        width: 100vw;
+        height: 100dvh;
+        top: 0;
+        left: 0;
+        transform: none;
+        margin: 0;
+    }
+
+    .window-body {
+        flex-direction: column;
+        height: auto;
+        align-items: center;
+    }
+
+    /* CENTRALIZA TUDO DA COLUNA ESQUERDA */
+    .lado-esquerdo {
+        width: 100%;
+        align-items: center;
+        text-align: center;
+    }
+
+    .profile-img {
+        width: 140px;
+        margin: auto;
+    }
+
+    .panel-left {
+        width: 80%;
+        margin: auto;
+        text-align: center;
+    }
+
+    /* BOTÕES CENTRALIZADOS */
+    .lado-esquerdo button {
+        width: 80%;
+        margin: 4px auto;
+        display: flex;
+        justify-content: center;
+    }
+
+    /* CENTRALIZA @DopyCat */
+    .row-head {
+        text-align: center;
+        width: 100%;
+    }
+
+    .row-subtitle {
+        text-align: center;
+    }
+
+    .lado-direito {
+        width: 100%;
+    }
+
 }
 
 /* ==========================
