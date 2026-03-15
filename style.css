@@ -12,6 +12,12 @@ body {
     height: 400px;
 }
 
+.card-window .title-bar {
+    background: linear-gradient(180deg, #ff94c2 0%, #ff4e6b 100%);
+    border-color: #e1006b;
+}
+
+
 .title-bar-text-custom {
     margin-left: 8px;
 }
@@ -71,9 +77,14 @@ body {
     margin-bottom: 7px;
 }
 
+.pink {
+    color: rgb(255, 78, 107);
+}
+
 .panel-right {
     flex: 1;
     overflow-y: auto;
+    padding: 10px;
 }
 
 .lado-esquerdo button {
@@ -86,6 +97,12 @@ body {
     align-items: center;
     justify-content: center;
     gap: 6px;
+    background-color:rgba(255, 78, 108, 0.57);;
+    color: #8a064f;
+}
+
+.btn-icon:hover {
+    background-color: #ffb2d9;
 }
 
 .platform-icon {
@@ -106,5 +123,14 @@ body {
 .lado-esquerdo .panel-left {
     font-size: 14px;
 }
+
+.btn-icon:active {
+    transform: translateY(3px);
+}
+
+
+
+
+
 
 
