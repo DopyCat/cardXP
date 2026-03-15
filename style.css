@@ -1,10 +1,20 @@
 /* ==========================
-   Body e Background
+   HTML e Body
+========================== */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* garante altura total */
+    width: 100%;
+}
+
+/* ==========================
+   Background
 ========================== */
 body {
-    margin: 0;
-    height: 100vh; /* altura total da tela */
-    background: url('img/wpp.jpg') center/cover no-repeat;
+    background: url('img/wpp.jpg') no-repeat center center;
+    background-size: cover; /* preenche totalmente sem distorcer */
+    background-attachment: fixed; /* mantém o background fixo ao rolar */
 }
 
 /* ==========================
