@@ -5,7 +5,8 @@ html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    min-height: 100dvh;
+    height: 100%;
+    overflow: hidden;
 }
 
 /* Background */
@@ -28,9 +29,17 @@ body {
 }
 
 .card-window.maximized {
-    width: 1100px;
-    height: 600px;
+    width: 90%;
+    height: 90dvh;
+
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
 }
+
 
 .title-bar {
     background: linear-gradient(180deg, #ff94c2 0%, #ff4e6b 100%);

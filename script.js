@@ -63,7 +63,16 @@ function animarBarras() {
 function toggleMaximize() {
     cardWindow.classList.toggle('maximized');
 
-    // Espera o browser aplicar a mudança de layout
+    if (cardWindow.classList.contains("maximized")) {
+
+        // reseta posição do drag
+        cardWindow.style.left = "";
+        cardWindow.style.top = "";
+
+        isDragging = false;
+
+    }
+
     requestAnimationFrame(() => {
         gerarBarras();
     });
@@ -79,6 +88,9 @@ let offsetX = 0;
 let offsetY = 0;
 
 titleBar.addEventListener("mousedown", (e) => {
+
+    if (cardWindow.classList.contains("maximized")) return;
+
     isDragging = true;
     offsetX = e.clientX - cardWindow.offsetLeft;
     offsetY = e.clientY - cardWindow.offsetTop;
