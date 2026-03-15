@@ -14,6 +14,7 @@ function playMusic() {
     audio.play();
     gerarBarras(); // garante que as barras existam antes de animar
     barsContainer.classList.add("playing");
+    animarBarras(); // inicia animação
 }
 
 function pauseMusic() {
@@ -25,17 +26,35 @@ function pauseMusic() {
 // Função para gerar barras dinamicamente
 // ==========================
 function gerarBarras() {
-    const containerWidth = barsContainer.offsetWidth;
-    const barWidth = 5; // largura de cada barra + gap
-    const numBarras = Math.floor(containerWidth / barWidth);
+    // Usa clientWidth para pegar largura real do container
+    const containerWidth = barsContainer.clientWidth;
+    const barWidth = 5;
+    const gap = 2;
+    const numBarras = Math.floor(containerWidth / (barWidth + gap));
 
     barsContainer.innerHTML = ''; // limpa barras existentes
 
     for (let i = 0; i < numBarras; i++) {
         const span = document.createElement('span');
+        span.style.width = `${barWidth}px`;
         span.style.height = '3px'; // altura inicial
         barsContainer.appendChild(span);
     }
+}
+
+// ==========================
+// Animação das barras
+// ==========================
+function animarBarras() {
+    const spans = barsContainer.querySelectorAll('span');
+    if (!barsContainer.classList.contains("playing")) return;
+
+    spans.forEach(span => {
+        const altura = Math.random() * 40 + 3; // altura aleatória
+        span.style.height = `${altura}px`;
+    });
+
+    requestAnimationFrame(animarBarras); // loop da animação
 }
 
 // ==========================
@@ -43,10 +62,13 @@ function gerarBarras() {
 // ==========================
 function toggleMaximize() {
     cardWindow.classList.toggle('maximized');
-    // não precisa mais do setTimeout ou requestAnimationFrame
+
+    // Espera o browser aplicar a mudança de layout
+    requestAnimationFrame(() => {
+        gerarBarras();
+    });
 }
 
-// conectar botão de maximizar
 maximizeButton.addEventListener('click', toggleMaximize);
 
 // ==========================
@@ -85,5 +107,5 @@ resizeObserver.observe(cardWindow);
 // ==========================
 // Inicialização das barras
 // ==========================
-window.addEventListener('load', gerarBarras);      // ao carregar página
-window.addEventListener('resize', gerarBarras);    // ao redimensionar janela
+window.addEventListener('load', gerarBarras);
+window.addEventListener('resize', gerarBarras);
