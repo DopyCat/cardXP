@@ -45,10 +45,12 @@
                 <button class="default btn-icon" onclick="window.open('https://discord.gg/nVXC6GKd3n')">
                     <img src="./img/icon-discord.png" alt="Discord" class="platform-icon">
                     Discord
-                    <button class="default btn-icon" onclick="window.open('https://www.tiktok.com/@dopy.cat')">
-                        <img src="./img/icon-tiktok.png" alt="Tiktok" class="platform-icon">
-                        Tiktok
-                    </button>
+                </button>
+
+                <button class="default btn-icon" onclick="window.open('https://www.tiktok.com/@dopy.cat')">
+                    <img src="./img/icon-tiktok.png" alt="Tiktok" class="platform-icon">
+                    Tiktok
+                </button>
 
             </div>
 
@@ -105,29 +107,71 @@
                         </ul>
                         I dont speak german, but i can if u like~
                     </div>
-                   
+
                 </div>
-                 <div class="table-view__row">
+                <!-- PLAYER RETRÔ -->
+                <div class="window music-window">
 
-                        <div class="window music-player">
-                            <div class="title-bar">
-                                <div class="title-bar-text">Windows Media Player</div>
-                                <div class="title-bar-controls">
-                                </div>
-                            </div>
-
-                            <div class="window-body">
-                                <audio controls>
-                                    <source src="audio/musica.mp3" type="audio/mpeg">
-                                    Your browser does not support audio.
-                                </audio>
-                            </div>
-                        </div>
+                    <div class="title-bar">
+                        <div class="title-bar-text">music.mp3</div>
                     </div>
 
-            </div>
+                    <div class="window-body">
 
+                        <div class="retro-player">
+
+                            <button onclick="playMusic()">▶</button>
+                            <button onclick="pauseMusic()">❚❚</button>
+
+                            <span class="mp3-label">MP3</span>
+
+                            <div class="bars" id="bars">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+
+                            <audio id="audio">
+                                <source src="audio/musica.mp3" type="audio/mpeg">
+                            </audio>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
         </div>
+
+        <script>
+
+            const audio = document.getElementById("audio")
+            const bars = document.getElementById("bars")
+
+            function playMusic() {
+                audio.play()
+                bars.classList.add("playing")
+            }
+
+            function pauseMusic() {
+                audio.pause()
+                bars.classList.remove("playing")
+            }
+
+        </script>
+</body>
+
+</html>
+
+</div>
+
+</div>
 
 </body>
 
