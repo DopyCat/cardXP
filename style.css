@@ -26,6 +26,12 @@ body {
     cursor: grabbing; /* mostra a mão fechada ao arrastar */
 }
 
+/* Tamanho "maximizado parcialmente" */
+.card-window.maximized {
+    width: 1100px; /* aumenta a largura */
+    height: 600px; /* aumenta a altura */
+}
+
 
 .card-window .title-bar,
 .music-window .title-bar {
@@ -223,12 +229,13 @@ a {
     align-items: flex-end;
     gap: 2px;
     height: 12px;
+    width: 100%; /* garante que o container tenha largura */
 }
 
 .bars span {
     width: 3px;
     background: black;
-    height: 3px;
+    height: 3px; /* altura inicial */
 }
 
 .playing span {
