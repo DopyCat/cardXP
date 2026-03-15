@@ -152,3 +152,12 @@ a {
     text-decoration: underline;
 }
 
+.music-player{
+    width: 250px;
+    margin-top: 10px;
+}
+
+.music-player audio{
+    width: 100%;
+}
+
