@@ -67,7 +67,7 @@ body {
 }
 
 .row-head {
-    font-size: 20px;
+    font-size: 30px;
     font-weight: bold;
     margin-bottom: 7px;
 }
@@ -137,6 +137,11 @@ body {
 
 .titulo{
     font-size: 20px;
+    
+}
+
+.panel-right .table-view__row {
+    padding: 5px;
 }
 
 
