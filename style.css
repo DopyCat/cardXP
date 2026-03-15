@@ -71,6 +71,7 @@ body {
     display: flex;
     flex-direction: column;
     font-size: 12px;
+    min-width: 0; /* ESSENCIAL */
 }
 
 .row-head {
@@ -90,7 +91,8 @@ body {
 
 .panel-right {
     flex: 1;
-    overflow: auto;
+    overflow-x: auto;   /* scroll horizontal */
+    overflow-y: auto;   /* scroll vertical */
     padding-top: 10px;
     padding-left: 10px;
 
@@ -272,4 +274,8 @@ a {
 
 .retro-player button:hover {
     transform: scale(1.2);
+}
+
+.panel-right .table-view__row {
+    white-space: nowrap;
 }
