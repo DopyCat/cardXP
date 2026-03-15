@@ -99,7 +99,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 6px;
-    background-color:rgba(255, 78, 108, 0.57);;
+    background-color:rgba(255, 78, 108, 0.57);
     color: #8a064f;
 }
 
@@ -147,5 +147,8 @@ body {
     padding-left: 20px; /* mantém o recuo da lista */
 }
 
-
+a {
+    color: rgba(255, 78, 108, 0.57);
+    text-decoration: underline;
+}
 
