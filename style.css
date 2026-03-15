@@ -1,20 +1,17 @@
-/* ==========================
-   HTML e Body
-========================== */
+/* HTML e Body */
 html, body {
     margin: 0;
     padding: 0;
-    height: 100%; /* garante altura total */
+    height: 100%; /* fallback */
     width: 100%;
+    min-height: 100dvh; /* altura real da tela em dispositivos modernos */
 }
 
-/* ==========================
-   Background
-========================== */
+/* Background */
 body {
     background: url('img/wpp.jpg') no-repeat center center;
-    background-size: cover; /* preenche totalmente sem distorcer */
-    background-attachment: fixed; /* mantém o background fixo ao rolar */
+    background-size: cover;
+    background-attachment: fixed; /* opcional, pode remover no mobile se houver problema */
 }
 
 /* ==========================
