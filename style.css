@@ -1,38 +1,43 @@
+/* ==========================
+   Body e Background
+========================== */
 body {
     margin: 0;
-    height: 100vh;
-    /* Garante que o body tenha a altura da tela inteira */
-    background-image: url('img/wpp.jpg');
-    /* Caminho da sua imagem */
-    background-size: cover;
-    /* Faz a imagem preencher todo o espaço */
-    background-position: center;
-    /* Centraliza a imagem */
-    background-repeat: no-repeat;
-    /* Evita repetição da imagem */
+    height: 100vh; /* Garante que o body tenha a altura da tela inteira */
+    background: url('img/wpp.jpg') center/cover no-repeat;
 }
 
+/* ==========================
+   Janelas e Cards
+========================== */
 .card-window {
     width: 500px;
     height: 400px;
 }
 
-.card-window .title-bar {
+.card-window .title-bar,
+.music-window .title-bar {
     background: linear-gradient(180deg, #ff94c2 0%, #ff4e6b 100%);
     border-color: #e1006b;
 }
-
 
 .title-bar-text-custom {
     margin-left: 8px;
 }
 
+/* ==========================
+   Estrutura do Corpo da Janela
+========================== */
 .window-body {
     display: flex;
     gap: 10px;
     height: calc(100% - 30px);
+    font-size: 14px; /* aumento de texto global */
 }
 
+/* --------------------------
+   Lado Esquerdo
+-------------------------- */
 .lado-esquerdo {
     width: 180px;
     display: flex;
@@ -52,50 +57,9 @@ body {
     width: 100%;
     min-height: 0;
     margin-bottom: 5px;
-
     display: flex;
     justify-content: center;
-    /* centro horizontal */
     align-items: center;
-    /* centro vertical */
-}
-
-.sidebar-note {
-    text-align: center;
-    font-size: 12px;
-    margin-top: 5px;
-}
-
-.lado-direito {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    font-size: 12px;
-    min-width: 0; /* ESSENCIAL */
-}
-
-.row-head {
-    font-size: 30px;
-    font-weight: bold;
-    margin-bottom: 7px;
-}
-
-.row-subtitle {
-    font-size: 15px;
-    margin-bottom: 7px;
-}
-
-.pink {
-    color: rgb(255, 78, 107);
-}
-
-.panel-right {
-    flex: 1;
-    overflow-x: auto;   /* scroll horizontal */
-    overflow-y: auto;   /* scroll vertical */
-    padding-top: 10px;
-    padding-left: 10px;
-
 }
 
 .lado-esquerdo button {
@@ -116,10 +80,13 @@ body {
     background-color: #ffb2d9;
 }
 
+.btn-icon:active {
+    transform: translateY(3px);
+}
+
 .platform-icon {
     width: 15px;
     height: 15px;
-
 }
 
 .sidebar-note {
@@ -128,33 +95,54 @@ body {
     margin: 0;
 }
 
-/* aumentar um pouco todos os textos, exceto @DopyCat (row-head), last updated (row-subtitle) e botões */
-.window-body,
-.lado-direito .panel-right,
-.lado-esquerdo .panel-left {
+/* --------------------------
+   Lado Direito
+-------------------------- */
+.lado-direito {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     font-size: 14px;
+    min-width: 0; /* essencial */
 }
 
-.btn-icon:active {
-    transform: translateY(3px);
+.panel-right {
+    flex: 1;
+    overflow: auto; /* scroll horizontal e vertical */
+    padding: 10px 0 0 10px;
 }
 
-.fixed-picture {
-    max-width: 100%;
-    height: auto;
+.panel-right .table-view__row {
+    white-space: nowrap;
+}
+
+/* --------------------------
+   Tipografia e Textos
+-------------------------- */
+.row-head {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+.row-subtitle {
+    font-size: 15px;
+    margin-bottom: 7px;
+}
+
+.pink {
+    color: rgb(255, 78, 107);
 }
 
 .titulo {
     font-size: 20px;
     display: block;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin: 10px 0;
 }
 
 ul {
-    margin: 0px;
-    padding-left: 20px;
-    /* mantém o recuo da lista */
+    margin: 0;
+    padding-left: 20px; /* mantém o recuo da lista */
 }
 
 a {
@@ -162,22 +150,34 @@ a {
     text-decoration: underline;
 }
 
+/* ==========================
+   Imagens e Figuras
+========================== */
+.fixed-picture {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ==========================
+   Retro Player / Música
+========================== */
 .retro-player {
     display: flex;
     align-items: center;
     gap: 8px;
-
     width: 100%;
     font-family: Tahoma;
     font-size: 12px;
 }
 
 .retro-player button {
-    border: none;
-    width: 18px;
-    height: 18px;
+    all: unset; /* remove TODOS os estilos do 98.css */
+    font-size: 14px;
     cursor: pointer;
-    font-size: 10px;
+}
+
+.retro-player button:hover {
+    transform: scale(1.2);
 }
 
 .mp3-label {
@@ -215,48 +215,15 @@ a {
 .bars span:nth-child(8n+8) { animation-delay: .7s; }
 
 @keyframes equalizer {
-    0% {
-        height: 3px
-    }
-
-    50% {
-        height: 12px
-    }
-
-    100% {
-        height: 3px
-    }
+    0%, 100% { height: 3px; }
+    50% { height: 12px; }
 }
 
+/* ==========================
+   Music Window
+========================== */
 .music-window {
     max-width: 100%;
     height: auto;
     margin-top: 10px;
-}
-
-.music-window .title-bar {
-    background: linear-gradient(180deg, #ff94c2 0%, #ff4e6b 100%);
-    border-color: #e1006b;
-}
-
-.retro-player {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    width: 100%;
-}
-
-.retro-player button {
-    all: unset; /* remove TODOS os estilos do 98.css */
-    font-size: 14px;
-    cursor: pointer;
-}
-
-.retro-player button:hover {
-    transform: scale(1.2);
-}
-
-.panel-right .table-view__row {
-    white-space: nowrap;
 }
