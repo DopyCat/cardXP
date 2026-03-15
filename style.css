@@ -1,7 +1,8 @@
 /* ==========================
    HTML e Body
 ========================== */
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     width: 100%;
@@ -46,7 +47,7 @@ body {
     border-color: #e1006b;
 }
 
-.title-bar:has(.title-bar-text-custom){
+.title-bar:has(.title-bar-text-custom) {
     cursor: grab;
 }
 
@@ -56,6 +57,134 @@ body {
 
 .title-bar-text-custom.dragging {
     cursor: grabbing;
+}
+
+/* ==========================
+   MOBILE LAYOUT OTIMIZADO
+========================== */
+.mobile-only {
+    display: none;
+}
+
+@media (max-width: 768px) {
+
+    /* janela ocupa tela inteira */
+    .card-window.maximized {
+        width: 100%;
+        height: 100dvh;
+        top: 0;
+        left: 0;
+        transform: none;
+    }
+
+    /* corpo principal */
+    .card-window.maximized .window-body {
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        gap: 6px;
+        padding: 6px;
+    }
+
+    /* permite reorganizar os elementos */
+    .card-window.maximized .lado-esquerdo,
+    .card-window.maximized .lado-direito {
+        display: contents;
+    }
+
+    /* --------------------------
+       TOPO PERFIL
+    -------------------------- */
+    .card-window.maximized .topo-perfil {
+        order: 1;
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .card-window.maximized .mobile-only {
+        display: block;
+    }
+
+    .card-window.maximized .profile-img {
+        width: 70px;
+        margin: 0;
+    }
+
+    .card-window.maximized .lado-esquerdo .profile-img {
+        display: none;
+    }
+
+    /* --------------------------
+       SCROLL INFO
+    -------------------------- */
+    .card-window.maximized .panel-left {
+        order: 2;
+    }
+
+    /* --------------------------
+       BOTÕES (TOUCH FRIENDLY)
+    -------------------------- */
+    .card-window.maximized .lado-esquerdo button {
+        order: 3;
+        width: 100%;
+        height: 38px;
+        font-size: 14px;
+        margin: 2px 0;
+        gap: 8px;
+    }
+
+    .card-window.maximized .platform-icon {
+        width: 18px;
+        height: 18px;
+    }
+
+    /* --------------------------
+       TEXTO PRINCIPAL
+    -------------------------- */
+    .card-window.maximized .panel-right {
+        order: 4;
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .card-window.maximized .table-view__row {
+        white-space: normal;
+        margin-bottom: 20px;
+    }
+
+    /* --------------------------
+       TITULOS
+    -------------------------- */
+    .card-window.maximized .row-head {
+        font-size: 22px;
+        margin-bottom: 2px;
+    }
+
+    .card-window.maximized .row-subtitle {
+        font-size: 13px;
+        margin-bottom: 4px;
+    }
+
+    .card-window.maximized .titulo {
+        font-size: 16px;
+        margin: 6px 0;
+    }
+
+    /* --------------------------
+       PLAYER
+    -------------------------- */
+    .card-window.maximized .music-window {
+        order: 5;
+        margin-top: 6px;
+    }
+
+    .card-window.maximized .retro-player {
+        gap: 6px;
+        font-size: 12px;
+    }
+
 }
 
 /* ==========================
@@ -100,8 +229,10 @@ body {
     align-items: center;
 
     background-image: url("img/pixel-hearts-pixel.gif");
-    background-size: cover;      /* cobre todo o painel */
-    background-position: center; /* centraliza */
+    background-size: cover;
+    /* cobre todo o painel */
+    background-position: center;
+    /* centraliza */
     background-repeat: no-repeat;
 }
 
@@ -314,5 +445,5 @@ a {
     max-width: 100%;
     height: auto;
     margin-top: 10px;
-    margin-bottom:2px;
+    margin-bottom: 2px;
 }
