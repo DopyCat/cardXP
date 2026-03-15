@@ -81,7 +81,7 @@ body {
 
 .panel-left {
     flex: 1;
-    overflow-y: auto;
+    overflow: auto;
     width: 100%;
     min-height: 0;
     margin-bottom: 5px;
