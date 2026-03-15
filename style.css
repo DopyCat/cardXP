@@ -3,7 +3,8 @@
 ========================== */
 body {
     margin: 0;
-    height: 100vh; /* Garante que o body tenha a altura da tela inteira */
+    height: 100vh;
+    /* Garante que o body tenha a altura da tela inteira */
     background: url('img/wpp.jpg') center/cover no-repeat;
 }
 
@@ -13,7 +14,18 @@ body {
 .card-window {
     width: 500px;
     height: 400px;
+    position: absolute;
+    top: 50px; /* posição inicial */
+    left: 50px;
 }
+
+.title-bar {
+    cursor: grab; /* mostra a mãozinha */
+}
+.title-bar-text-custom.dragging {
+    cursor: grabbing; /* mostra a mão fechada ao arrastar */
+}
+
 
 .card-window .title-bar,
 .music-window .title-bar {
@@ -32,7 +44,8 @@ body {
     display: flex;
     gap: 10px;
     height: calc(100% - 30px);
-    font-size: 14px; /* aumento de texto global */
+    font-size: 14px;
+    /* aumento de texto global */
 }
 
 /* --------------------------
@@ -50,8 +63,9 @@ body {
     border: 1px solid black;
     margin-bottom: 10px;
     box-shadow: inset -2px -2px 0 #ffffff,
-                inset 2px 2px 0 #808080,
-                2px 2px 0 #808080; /* sombra externa para profundidade */
+        inset 2px 2px 0 #808080,
+        2px 2px 0 #808080;
+    /* sombra externa para profundidade */
 
 }
 
@@ -107,12 +121,14 @@ body {
     display: flex;
     flex-direction: column;
     font-size: 14px;
-    min-width: 0; /* essencial */
+    min-width: 0;
+    /* essencial */
 }
 
 .panel-right {
     flex: 1;
-    overflow: auto; /* scroll horizontal e vertical */
+    overflow: auto;
+    /* scroll horizontal e vertical */
     padding: 10px 0 0 10px;
 }
 
@@ -146,7 +162,8 @@ body {
 
 ul {
     margin: 0;
-    padding-left: 20px; /* mantém o recuo da lista */
+    padding-left: 20px;
+    /* mantém o recuo da lista */
 }
 
 a {
@@ -175,13 +192,22 @@ a {
 }
 
 .retro-player button {
-    all: unset; /* remove TODOS os estilos do 98.css */
-    font-size: 14px;
+    all: unset;
     cursor: pointer;
+    display: inline-block;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .retro-player button:hover {
     transform: scale(1.2);
+}
+
+/* efeito fofo ao clicar */
+.retro-player button:active {
+    transform: scale(0.9) rotate(-10deg);
+    /* dá um pequeno “pulinho” e giro */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    /* sombra divertida */
 }
 
 .mp3-label {
@@ -209,18 +235,48 @@ a {
     animation: equalizer 1s infinite ease-in-out;
 }
 
-.bars span:nth-child(8n+1) { animation-delay: 0s; }
-.bars span:nth-child(8n+2) { animation-delay: .1s; }
-.bars span:nth-child(8n+3) { animation-delay: .2s; }
-.bars span:nth-child(8n+4) { animation-delay: .3s; }
-.bars span:nth-child(8n+5) { animation-delay: .4s; }
-.bars span:nth-child(8n+6) { animation-delay: .5s; }
-.bars span:nth-child(8n+7) { animation-delay: .6s; }
-.bars span:nth-child(8n+8) { animation-delay: .7s; }
+.bars span:nth-child(8n+1) {
+    animation-delay: 0s;
+}
+
+.bars span:nth-child(8n+2) {
+    animation-delay: .1s;
+}
+
+.bars span:nth-child(8n+3) {
+    animation-delay: .2s;
+}
+
+.bars span:nth-child(8n+4) {
+    animation-delay: .3s;
+}
+
+.bars span:nth-child(8n+5) {
+    animation-delay: .4s;
+}
+
+.bars span:nth-child(8n+6) {
+    animation-delay: .5s;
+}
+
+.bars span:nth-child(8n+7) {
+    animation-delay: .6s;
+}
+
+.bars span:nth-child(8n+8) {
+    animation-delay: .7s;
+}
 
 @keyframes equalizer {
-    0%, 100% { height: 3px; }
-    50% { height: 12px; }
+
+    0%,
+    100% {
+        height: 3px;
+    }
+
+    50% {
+        height: 12px;
+    }
 }
 
 /* ==========================
