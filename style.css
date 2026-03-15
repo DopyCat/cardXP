@@ -29,9 +29,12 @@ body {
 }
 
 .title-bar {
-    cursor: grab;
     background: linear-gradient(180deg, #ff94c2 0%, #ff4e6b 100%);
     border-color: #e1006b;
+}
+
+.title-bar:has(.title-bar-text-custom){
+    cursor: grab;
 }
 
 .title-bar-text-custom {
