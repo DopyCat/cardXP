@@ -263,3 +263,13 @@ a {
 
     width: 100%;
 }
+
+.retro-player button {
+    all: unset; /* remove TODOS os estilos do 98.css */
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.retro-player button:hover {
+    transform: scale(1.2);
+}
