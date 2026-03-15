@@ -83,7 +83,7 @@ body {
 
 .panel-right {
     flex: 1;
-    overflow-x: auto;
+    overflow: auto;
     padding-top: 10px;
     padding-left: 10px;
     
@@ -137,14 +137,15 @@ body {
 
 .titulo{
     font-size: 20px;
-    
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-.panel-right .table-view__row {
-    padding: 5px;
+ ul {
+    margin: 0px;
+    padding-left: 20px; /* mantém o recuo da lista */
 }
-
-
 
 
 
