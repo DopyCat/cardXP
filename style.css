@@ -222,7 +222,7 @@ body {
 
 .panel-left {
     flex: 1;
-    overflow: auto;
+    overflow: hidden;
     width: 100%;
     margin-top: 10px;
     margin-bottom: 10px;
