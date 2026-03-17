@@ -81,7 +81,6 @@ body {
         display: flex;
         flex-direction: column;
         overflow-y: auto;
-        
     }
 
     /* permite reorganizar os elementos */
@@ -173,7 +172,7 @@ body {
 
     .card-window.maximized .titulo {
         font-size: 16px;
-        margin: 6px 0;
+        margin: 6px;
     }
 
     /* --------------------------
