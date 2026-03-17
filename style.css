@@ -216,7 +216,6 @@ body {
 .profile-img {
     width: 180px;
     border: 1px solid black;
-    margin-bottom: 10px;
     box-shadow: inset -2px -2px 0 #fff,
         inset 2px 2px 0 #808080,
         2px 2px 0 #808080;
@@ -226,7 +225,8 @@ body {
     flex: 1;
     overflow: auto;
     width: 100%;
-    min-height: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
 
 
     display: flex;
@@ -244,6 +244,8 @@ body {
 .lado-esquerdo button {
     width: 100%;
     margin: 2px;
+    margin-top: 2px;
+    margin-bottom: 2px;
 }
 
 .btn-icon {
@@ -289,6 +291,8 @@ body {
     flex: 1;
     overflow: auto;
     padding: 10px 0 0 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .panel-right .table-view__row {
@@ -449,6 +453,5 @@ a {
 .music-window {
     max-width: 100%;
     height: auto;
-    margin-top: 10px;
     margin-bottom: 2px;
 }
