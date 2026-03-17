@@ -83,7 +83,6 @@ body {
         flex-direction: column;
         overflow-y: auto;
         gap: 6px;
-        padding: 6px;
     }
 
     /* permite reorganizar os elementos */
@@ -132,10 +131,10 @@ body {
     .card-window.maximized .lado-esquerdo button {
         order: 3;
         width: 100%;
-        min-height: 38px;
+        min-height: 70px;
         font-size: 14px;
         margin-top: 2px;
-        margin-bottom: 2px;
+        margin-bottom: 10px;
         gap: 8px;
 
     }
