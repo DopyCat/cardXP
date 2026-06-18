@@ -127,7 +127,7 @@ export default function CardWindow() {
   }, []);
 
   return (
-    <div className="card-window" ref={cardWindowRef}>
+    <div className="window card-window" ref={cardWindowRef}>
       <div className="title-bar" ref={titleBarRef} onMouseDown={handleMouseDown}>
         <div className="title-bar-text title-bar-text-custom">www.dopycat.com</div>
         <div className="title-bar-controls">

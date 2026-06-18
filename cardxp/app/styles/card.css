@@ -40,20 +40,25 @@ body {
 }
 
 
-.title-bar {
+.card-window > .title-bar {
     background: linear-gradient(180deg, #ff94c2 0%, #ff4e6b 100%);
     border-color: #e1006b;
 }
 
-.title-bar:has(.title-bar-text-custom) {
+.music-window > .title-bar {
+    background: linear-gradient(180deg, #ff94c2 0%, #ff4e6b 100%);
+    border-color: #e1006b;
+}
+
+.card-window > .title-bar:has(.title-bar-text-custom) {
     cursor: grab;
 }
 
-.title-bar-text-custom {
+.card-window > .title-bar .title-bar-text-custom {
     margin-left: 8px;
 }
 
-.title-bar-text-custom.dragging {
+.card-window > .title-bar .title-bar-text-custom.dragging {
     cursor: grabbing;
 }
 
