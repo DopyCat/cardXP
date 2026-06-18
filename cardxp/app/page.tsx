@@ -17,7 +17,7 @@ export default function Home() {
       ) : null}
       <DesktopFolder
         name="Pasta"
-        initialPosition={{ x: 560, y: 48 }}
+        initialPosition={{ x: 70, y: 70 }}
         onOpen={() => setIsCardOpen(true)}
       />
     </main>

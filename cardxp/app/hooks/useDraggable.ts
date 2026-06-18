@@ -16,6 +16,8 @@ let nextZIndex = 1;
 export function useDraggable<T extends HTMLElement>({ initialPosition }: UseDraggableOptions) {
   const elementRef = useRef<T>(null);
   const dragOffsetRef = useRef<Point>({ x: 0, y: 0 });
+  const dragStartRef = useRef<Point>({ x: 0, y: 0 });
+  const hasDraggedRef = useRef(false);
   const [position, setPosition] = useState<Point>(initialPosition);
   const [isDragging, setIsDragging] = useState(false);
   const [zIndex, setZIndex] = useState(1);
@@ -32,6 +34,12 @@ export function useDraggable<T extends HTMLElement>({ initialPosition }: UseDrag
     if (!element) {
       return;
     }
+
+    dragStartRef.current = {
+      x: event.clientX,
+      y: event.clientY,
+    };
+    hasDraggedRef.current = false;
 
     dragOffsetRef.current = {
       x: event.clientX - position.x,
@@ -51,6 +59,13 @@ export function useDraggable<T extends HTMLElement>({ initialPosition }: UseDrag
     }
 
     const handleMouseMove = (event: MouseEvent) => {
+      const deltaX = Math.abs(event.clientX - dragStartRef.current.x);
+      const deltaY = Math.abs(event.clientY - dragStartRef.current.y);
+
+      if (deltaX > 2 || deltaY > 2) {
+        hasDraggedRef.current = true;
+      }
+
       setPosition({
         x: event.clientX - dragOffsetRef.current.x,
         y: event.clientY - dragOffsetRef.current.y,
@@ -70,11 +85,21 @@ export function useDraggable<T extends HTMLElement>({ initialPosition }: UseDrag
     };
   }, [isDragging]);
 
+  const shouldSuppressClick = useCallback(() => {
+    if (!hasDraggedRef.current) {
+      return false;
+    }
+
+    hasDraggedRef.current = false;
+    return true;
+  }, []);
+
   return {
     elementRef,
     isDragging,
     position,
     zIndex,
     handleMouseDown,
+    shouldSuppressClick,
   };
 }

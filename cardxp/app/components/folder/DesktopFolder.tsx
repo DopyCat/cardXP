@@ -13,7 +13,7 @@ type DesktopFolderProps = {
 };
 
 export function DesktopFolder({ name, initialPosition, onOpen }: DesktopFolderProps) {
-  const { elementRef, handleMouseDown, isDragging, position, zIndex } = useDraggable<HTMLDivElement>({
+  const { elementRef, handleMouseDown, isDragging, position, zIndex, shouldSuppressClick } = useDraggable<HTMLDivElement>({
     initialPosition,
   });
 
@@ -38,7 +38,15 @@ export function DesktopFolder({ name, initialPosition, onOpen }: DesktopFolderPr
         zIndex,
       }}
       onMouseDown={handleMouseDown}
-      onClick={onOpen}
+      onClick={(event) => {
+        if (shouldSuppressClick()) {
+          event.preventDefault();
+          event.stopPropagation();
+          return;
+        }
+
+        onOpen?.();
+      }}
       onKeyDown={handleKeyDown}
       role="button"
       tabIndex={0}
