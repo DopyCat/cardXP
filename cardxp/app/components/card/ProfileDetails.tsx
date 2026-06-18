@@ -2,7 +2,7 @@ export function ProfileDetails() {
   return (
     <>
       <div className="topo-perfil">
-        <img src="/img/pfp.jpg" className="profile-img mobile-only" alt="Profile" />
+        <img src="/img/card/pfp.jpg" className="profile-img mobile-only" alt="Profile" />
         <div>
           <div className="table-view__row row-head">
             <strong className="pink">@DopyCat</strong>
@@ -33,7 +33,7 @@ export function ProfileDetails() {
             <li>Ogata from Golden Kamuy.</li>
             <br />
           </ul>
-          <img src="/img/ogata.jpg" className="fixed-picture" alt="Ogata" />
+          <img src="/img/card/ogata.jpg" className="fixed-picture" alt="Ogata" />
         </div>
 
         <div className="table-view__row">

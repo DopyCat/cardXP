@@ -8,7 +8,7 @@ type ProfileSidebarProps = {
 export function ProfileSidebar({ links, onOpenLink }: ProfileSidebarProps) {
   return (
     <div className="lado-esquerdo">
-      <img src="/img/pfp.jpg" className="profile-img" alt="Profile" />
+      <img src="/img/card/pfp.jpg" className="profile-img" alt="Profile" />
       <div className="sunken-panel panel-left">
         <p className="sidebar-note">
           <strong>scroll to read -&gt;</strong>

@@ -22,7 +22,7 @@ body {
 
 body {
   overflow: hidden;
-  background: url('/img/wpp.jpg') no-repeat center center;
+  background: url('/img/background/wpp.jpg') no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
   color: var(--foreground);
