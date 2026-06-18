@@ -8,8 +8,10 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  /* Substitui Geist e Geist Mono */
+  --font-sans: "Pixelated MS Sans Serif", Arial, sans-serif;
+  --font-mono: "Pixelated MS Sans Serif", Arial, sans-serif;
 }
 
 html,
@@ -26,5 +28,8 @@ body {
   background-size: cover;
   background-attachment: fixed;
   color: var(--foreground);
-  font-family: "Pixelated MS Sans Serif", Arial;
+}
+
+* {
+  font-family: "Pixelated MS Sans Serif", Arial, sans-serif;
 }
