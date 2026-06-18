@@ -1,0 +1,460 @@
+/* ==========================
+   HTML e Body
+========================== */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Background */
+body {
+    background: url('/img/wpp.jpg') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+
+/* ==========================
+   Janelas e Cards
+========================== */
+.card-window {
+    width: 500px;
+    height: 400px;
+    position: absolute;
+}
+
+.card-window.maximized {
+    width: 100%;
+    height: 100dvh;
+
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+}
+
+
+.title-bar {
+    background: linear-gradient(180deg, #ff94c2 0%, #ff4e6b 100%);
+    border-color: #e1006b;
+}
+
+.title-bar:has(.title-bar-text-custom) {
+    cursor: grab;
+}
+
+.title-bar-text-custom {
+    margin-left: 8px;
+}
+
+.title-bar-text-custom.dragging {
+    cursor: grabbing;
+}
+
+/* ==========================
+   MOBILE LAYOUT OTIMIZADO
+========================== */
+.mobile-only {
+    display: none;
+}
+
+@media (max-width: 768px) {
+
+    .card-window.maximized .profile-img {
+        width: 90px;
+        height: auto;
+    }
+
+    /* janela ocupa tela inteira */
+    .card-window.maximized {
+        width: 100%;
+        height: 100dvh;
+        top: 0;
+        left: 0;
+        transform: none;
+    }
+
+    /* corpo principal */
+    .card-window.maximized .window-body {
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+    }
+
+    /* permite reorganizar os elementos */
+    .card-window.maximized .lado-esquerdo,
+    .card-window.maximized .lado-direito {
+        display: contents;
+    }
+
+    /* --------------------------
+       TOPO PERFIL
+    -------------------------- */
+
+    .card-window.maximized .topo-perfil {
+        order: 1;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        width: 100%;
+    }
+
+
+    .card-window.maximized .mobile-only {
+        display: block;
+    }
+
+    .card-window.maximized .profile-img {
+        margin-right: 20px;
+
+    }
+
+    .card-window.maximized .lado-esquerdo .profile-img {
+        display: none;
+    }
+
+    /* --------------------------
+       SCROLL INFO
+    -------------------------- */
+    .card-window.maximized .panel-left {
+        order: 2;
+        min-height: 60px;
+
+    }
+
+    /* --------------------------
+       BOTÕES (TOUCH FRIENDLY)
+    -------------------------- */
+    .card-window.maximized .lado-esquerdo button {
+        order: 3;
+        width: 100%;
+        min-height: 70px;
+        font-size: 14px;
+        margin-top: 2px;
+        margin-bottom: 10px;
+        gap: 8px;
+
+    }
+
+    .card-window.maximized .platform-icon {
+        width: 18px;
+        height: 18px;
+    }
+
+    /* --------------------------
+       TEXTO PRINCIPAL
+    -------------------------- */
+    .card-window.maximized .panel-right {
+        order: 4;
+        font-size: 14px;
+
+        width: 100%;
+        flex: 1;
+        min-height: 500px;
+
+    }
+
+
+    /* --------------------------
+       TITULOS
+    -------------------------- */
+    .card-window.maximized .row-head {
+        font-size: 25px;
+        margin-bottom: 10px;
+
+    }
+
+    .card-window.maximized .row-subtitle {
+        font-size: 20px;
+    }
+
+    .card-window.maximized .titulo {
+        font-size: 16px;
+        margin: 6px;
+    }
+
+    /* --------------------------
+       PLAYER
+    -------------------------- */
+    .card-window.maximized .music-window {
+        order: 5;
+        margin-top: 6px;
+    }
+
+    .card-window.maximized .retro-player {
+        gap: 6px;
+        font-size: 12px;
+    }
+
+}
+
+/* ==========================
+   Estrutura do Corpo da Janela
+========================== */
+.window-body {
+    display: flex;
+    gap: 10px;
+    height: calc(100% - 35px);
+    font-size: 14px;
+    
+}
+
+
+/* --------------------------
+   Lado Esquerdo
+-------------------------- */
+.lado-esquerdo {
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-img {
+    width: 180px;
+    border: 1px solid black;
+    box-shadow: inset -2px -2px 0 #fff,
+        inset 2px 2px 0 #808080,
+        2px 2px 0 #808080;
+}
+
+.panel-left {
+    flex: 1;
+    overflow: hidden;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-image: url("/img/pixel-hearts-pixel.gif");
+    background-size: cover;
+    /* cobre todo o painel */
+    background-position: center;
+    /* centraliza */
+    background-repeat: no-repeat;
+}
+
+.lado-esquerdo button {
+    width: 100%;
+    margin: 2px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.btn-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background-color: rgba(255, 78, 108, 0.57);
+    color: #8a064f;
+}
+
+.btn-icon:hover {
+    background-color: #ffb2d9;
+}
+
+.btn-icon:active {
+    transform: translateY(3px);
+}
+
+.platform-icon {
+    width: 15px;
+    height: 15px;
+}
+
+.sidebar-note {
+    text-align: center;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* --------------------------
+   Lado Direito
+-------------------------- */
+.lado-direito {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    min-width: 0;
+}
+
+.panel-right {
+    flex: 1;
+    overflow: auto;
+    padding: 10px 0 0 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.panel-right .table-view__row {
+    white-space: nowrap;
+}
+
+/* ==========================
+   Tipografia e Textos
+========================== */
+.row-head {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+.row-subtitle {
+    font-size: 15px;
+
+}
+
+.pink {
+    color: rgb(255, 78, 107);
+}
+
+.titulo {
+    font-size: 20px;
+    display: block;
+    margin: 10px 0;
+}
+
+ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+a {
+    color: rgba(255, 78, 108, 0.57);
+    text-decoration: underline;
+}
+
+/* ==========================
+   Imagens e Figuras
+========================== */
+.fixed-picture {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ==========================
+   Retro Player / Música
+========================== */
+.retro-player {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    font-family: Tahoma;
+    font-size: 12px;
+}
+
+.retro-player button {
+    all: unset;
+    cursor: pointer;
+    display: inline-block;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.retro-player button:hover {
+    transform: scale(1.2);
+}
+
+.retro-player button:active {
+    transform: scale(0.9) rotate(-10deg);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.mp3-label {
+    font-weight: bold;
+}
+
+.volume {
+    font-size: 12px;
+}
+
+/* --------------------------
+   Barras de música
+-------------------------- */
+.bars,
+#bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    width: 100%;
+    height: 12px;
+    overflow: hidden;
+}
+
+.bars span,
+#bars span {
+    display: block;
+    width: 5px;
+    height: 3px;
+    background: black;
+    transition: height 0.2s;
+}
+
+.playing span {
+    animation: equalizer 1s infinite ease-in-out;
+}
+
+.bars span:nth-child(8n+1) {
+    animation-delay: 0s;
+}
+
+.bars span:nth-child(8n+2) {
+    animation-delay: .1s;
+}
+
+.bars span:nth-child(8n+3) {
+    animation-delay: .2s;
+}
+
+.bars span:nth-child(8n+4) {
+    animation-delay: .3s;
+}
+
+.bars span:nth-child(8n+5) {
+    animation-delay: .4s;
+}
+
+.bars span:nth-child(8n+6) {
+    animation-delay: .5s;
+}
+
+.bars span:nth-child(8n+7) {
+    animation-delay: .6s;
+}
+
+.bars span:nth-child(8n+8) {
+    animation-delay: .7s;
+}
+
+@keyframes equalizer {
+
+    0%,
+    100% {
+        height: 3px;
+    }
+
+    50% {
+        height: 12px;
+    }
+}
+
+/* ==========================
+   Music Window
+========================== */
+.music-window {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 2px;
+}
