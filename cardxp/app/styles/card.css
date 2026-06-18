@@ -1,24 +1,4 @@
 /* ==========================
-   HTML e Body
-========================== */
-html,
-body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-/* Background */
-body {
-    background: url('/img/wpp.jpg') no-repeat center center;
-    background-size: cover;
-    background-attachment: fixed;
-}
-
-
-/* ==========================
    Janelas e Cards
 ========================== */
 .card-window {
@@ -38,13 +18,7 @@ body {
 
     transform: translate(-50%, -50%);
 }
-
-
-.card-window > .title-bar {
-    background: linear-gradient(180deg, #ff94c2 0%, #ff4e6b 100%);
-    border-color: #e1006b;
-}
-
+.card-window > .title-bar,
 .music-window > .title-bar {
     background: linear-gradient(180deg, #ff94c2 0%, #ff4e6b 100%);
     border-color: #e1006b;
@@ -383,15 +357,10 @@ a {
     font-weight: bold;
 }
 
-.volume {
-    font-size: 12px;
-}
-
 /* --------------------------
    Barras de música
 -------------------------- */
-.bars,
-#bars {
+.bars {
     display: flex;
     align-items: flex-end;
     gap: 2px;
@@ -400,8 +369,7 @@ a {
     overflow: hidden;
 }
 
-.bars span,
-#bars span {
+.bars span {
     display: block;
     width: 5px;
     height: 3px;
@@ -409,7 +377,7 @@ a {
     transition: height 0.2s;
 }
 
-.playing span {
+.bars.playing span {
     animation: equalizer 1s infinite ease-in-out;
 }
 
