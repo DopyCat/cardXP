@@ -334,6 +334,8 @@ body {
 ul {
     margin: 0;
     padding-left: 20px;
+    list-style-type: disc;
+    list-style-position: inside;
 }
 
 a {
