@@ -1,0 +1,47 @@
+/* ==========================
+   Desktop / Pasta
+========================== */
+.desktop-shell {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.desktop-folder {
+    position: absolute;
+    width: 104px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    cursor: grab;
+    user-select: none;
+    touch-action: none;
+    color: #fff;
+    text-align: center;
+    text-shadow: 1px 1px 0 #000;
+}
+
+.desktop-folder:active {
+    cursor: grabbing;
+}
+
+.desktop-folder__icon {
+    width: 88px;
+    height: 88px;
+    background-image: url('/img/background/folder.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.desktop-folder__name {
+    display: block;
+    max-width: 100%;
+    padding: 2px 6px;
+    font-family: Tahoma, sans-serif;
+    font-size: 14px;
+    line-height: 1.1;
+    word-break: break-word;
+}

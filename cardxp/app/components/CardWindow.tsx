@@ -7,7 +7,12 @@ import { ProfileSidebar } from './card/ProfileSidebar';
 import { socialLinks } from './card/data';
 import { useCardWindowController } from '../hooks/useCardWindowController';
 
-export default function CardWindow() {
+type CardWindowProps = {
+  onClose: () => void;
+  onMinimize: () => void;
+};
+
+export default function CardWindow({ onClose, onMinimize }: CardWindowProps) {
   const {
     audioRef,
     barsContainerRef,
@@ -27,9 +32,9 @@ export default function CardWindow() {
       <div className="title-bar" onMouseDown={handleMouseDown}>
         <div className="title-bar-text title-bar-text-custom">www.dopycat.com</div>
         <div className="title-bar-controls">
-          <button aria-label="Minimize"></button>
+          <button aria-label="Minimize" onClick={onMinimize}></button>
           <button aria-label="Maximize" onClick={toggleMaximize}></button>
-          <button aria-label="Close"></button>
+          <button aria-label="Close" onClick={onClose}></button>
         </div>
       </div>
 

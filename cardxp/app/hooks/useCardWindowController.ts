@@ -102,8 +102,9 @@ export function useCardWindowController() {
 
   const handleMouseDown = useCallback((event: ReactMouseEvent) => {
     const cardWindow = cardWindowRef.current;
+    const target = event.target as HTMLElement | null;
 
-    if (!cardWindow || cardWindow.classList.contains('maximized')) {
+    if (!cardWindow || cardWindow.classList.contains('maximized') || target?.closest('button')) {
       return;
     }
 
