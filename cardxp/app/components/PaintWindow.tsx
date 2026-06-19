@@ -28,6 +28,9 @@ export default function PaintWindow({
   const [drawing, setDrawing] = useState(false);
   const [brushSize, setBrushSize] = useState(3);
   const [brushColor, setBrushColor] = useState('#000000');
+  const [tool, setTool] = useState<'pencil' | 'eraser'>(
+    'pencil'
+  );
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -76,7 +79,10 @@ export default function PaintWindow({
     if (!canvas || !ctx) return;
 
     ctx.lineWidth = brushSize;
-    ctx.strokeStyle = brushColor;
+    ctx.strokeStyle =
+      tool === 'eraser'
+        ? '#ffffff'
+        : brushColor;
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
 
@@ -159,6 +165,23 @@ export default function PaintWindow({
 
       <div className="window-body">
         <div className="paint-toolbar">
+          <button
+            onClick={() => setTool('pencil')}
+            className={
+              tool === 'pencil' ? 'active-tool' : ''
+            }
+          >
+            ✏️
+          </button>
+
+          <button
+            onClick={() => setTool('eraser')}
+            className={
+              tool === 'eraser' ? 'active-tool' : ''
+            }
+          >
+            🧽
+          </button>
           <button onClick={saveImage}>
             Salvar
           </button>
