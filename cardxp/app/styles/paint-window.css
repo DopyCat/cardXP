@@ -1,0 +1,45 @@
+.paint-window {
+  position: absolute;
+  top: 80px;
+  left: 200px;
+
+  width: 900px;
+  height: 650px;
+
+  z-index: 1000;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.paint-window .window-body {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+}
+
+.paint-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 8px;
+}
+
+.canvas-container {
+  flex: 1;
+
+  border: 1px solid #808080;
+
+  overflow: hidden;
+}
+
+.paint-canvas {
+  width: 100%;
+  height: 100%;
+  background: white;
+  cursor: crosshair;
+}
