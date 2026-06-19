@@ -2,6 +2,7 @@
 
 import { useRef, useEffect, useState } from 'react';
 import '../styles/paint-window.css';
+import { useCardWindowController } from '../hooks/useCardWindowController';
 
 type PaintWindowProps = {
   onClose: () => void;
@@ -12,6 +13,12 @@ export default function PaintWindow({
   onClose,
   onMinimize,
 }: PaintWindowProps) {
+  const {
+    cardWindowRef,
+    toggleMaximize,
+    handleMouseDown,
+  } = useCardWindowController();
+
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const [drawing, setDrawing] = useState(false);
@@ -23,21 +30,17 @@ export default function PaintWindow({
 
     if (!canvas) return;
 
-    const resizeCanvas = () => {
-      const rect = canvas.getBoundingClientRect();
+    const rect = canvas.getBoundingClientRect();
 
-      canvas.width = rect.width;
-      canvas.height = rect.height;
+    canvas.width = rect.width;
+    canvas.height = rect.height;
 
-      const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d');
 
-      if (!ctx) return;
+    if (!ctx) return;
 
-      ctx.fillStyle = '#ffffff';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-    };
-
-    resizeCanvas();
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
   }, []);
 
   const startDrawing = (
@@ -49,6 +52,7 @@ export default function PaintWindow({
     if (!canvas || !ctx) return;
 
     ctx.beginPath();
+
     ctx.moveTo(
       e.nativeEvent.offsetX,
       e.nativeEvent.offsetY
@@ -94,6 +98,7 @@ export default function PaintWindow({
     if (!ctx) return;
 
     ctx.fillStyle = '#ffffff';
+
     ctx.fillRect(
       0,
       0,
@@ -116,8 +121,14 @@ export default function PaintWindow({
   };
 
   return (
-    <div className="window paint-window">
-      <div className="title-bar">
+    <div
+      className="window paint-window"
+      ref={cardWindowRef}
+    >
+      <div
+        className="title-bar"
+        onMouseDown={handleMouseDown}
+      >
         <div className="title-bar-text">
           Paint
         </div>
@@ -128,7 +139,10 @@ export default function PaintWindow({
             onClick={onMinimize}
           />
 
-          <button aria-label="Maximize" />
+          <button
+            aria-label="Maximize"
+            onClick={toggleMaximize}
+          />
 
           <button
             aria-label="Close"

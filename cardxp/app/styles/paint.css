@@ -39,3 +39,14 @@
     line-height: 1.1;
     word-break: break-word;
 }
+
+.card-window > .title-bar,
+.music-window > .title-bar,
+.paint-window > .title-bar {
+    background: linear-gradient(180deg, #ff94c2 0%, #ff4e6b 100%);
+    border-color: #e1006b;
+}
+
+.paint-window .title-bar-text {
+    margin-left: 8px;
+}
