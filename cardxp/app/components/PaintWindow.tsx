@@ -5,11 +5,15 @@ import '../styles/paint-window.css';
 import { useCardWindowController } from '../hooks/useCardWindowController';
 
 type PaintWindowProps = {
+  zIndex: number;
+  onFocus: () => void;
   onClose: () => void;
   onMinimize: () => void;
 };
 
 export default function PaintWindow({
+  zIndex,
+  onFocus,
   onClose,
   onMinimize,
 }: PaintWindowProps) {
@@ -124,6 +128,8 @@ export default function PaintWindow({
     <div
       className="window paint-window"
       ref={cardWindowRef}
+      style={{ zIndex }}
+      onMouseDown={onFocus}
     >
       <div
         className="title-bar"
@@ -161,9 +167,7 @@ export default function PaintWindow({
             Limpar
           </button>
 
-          <label>
-            Tamanho:
-          </label>
+          <label>Tamanho:</label>
 
           <input
             type="range"
@@ -177,9 +181,7 @@ export default function PaintWindow({
 
           <span>{brushSize}px</span>
 
-          <label>
-            Cor:
-          </label>
+          <label>Cor:</label>
 
           <input
             type="color"

@@ -8,11 +8,18 @@ import { socialLinks } from './card/data';
 import { useCardWindowController } from '../hooks/useCardWindowController';
 
 type CardWindowProps = {
+  zIndex: number;
+  onFocus: () => void;
   onClose: () => void;
   onMinimize: () => void;
 };
 
-export default function CardWindow({ onClose, onMinimize }: CardWindowProps) {
+export default function CardWindow({
+  zIndex,
+  onFocus,
+  onClose,
+  onMinimize,
+}: CardWindowProps) {
   const {
     audioRef,
     barsContainerRef,
@@ -28,9 +35,17 @@ export default function CardWindow({ onClose, onMinimize }: CardWindowProps) {
   };
 
   return (
-    <div className="window card-window" ref={cardWindowRef}>
+    <div
+      className="window card-window"
+      ref={cardWindowRef}
+      style={{ zIndex }}
+      onMouseDown={onFocus}
+    >
       <div className="title-bar" onMouseDown={handleMouseDown}>
-        <div className="title-bar-text title-bar-text-custom">www.dopycat.com</div>
+        <div className="title-bar-text title-bar-text-custom">
+          www.dopycat.com
+        </div>
+
         <div className="title-bar-controls">
           <button aria-label="Minimize" onClick={onMinimize}></button>
           <button aria-label="Maximize" onClick={toggleMaximize}></button>
@@ -39,10 +54,14 @@ export default function CardWindow({ onClose, onMinimize }: CardWindowProps) {
       </div>
 
       <div className="window-body">
-        <ProfileSidebar links={socialLinks} onOpenLink={openExternalLink} />
+        <ProfileSidebar
+          links={socialLinks}
+          onOpenLink={openExternalLink}
+        />
 
         <div className="lado-direito">
           <ProfileDetails />
+
           <MusicPlayer
             onPlay={playMusic}
             onPause={pauseMusic}
