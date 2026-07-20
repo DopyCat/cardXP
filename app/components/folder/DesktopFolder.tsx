@@ -1,7 +1,8 @@
 'use client';
 
-import { useDraggable } from '../../hooks/useDraggable';
 import '../../styles/folder.css';
+
+import { DesktopShortcut } from '../desktop/DesktopShortcut';
 
 type DesktopFolderProps = {
   name: string;
@@ -13,48 +14,14 @@ type DesktopFolderProps = {
 };
 
 export function DesktopFolder({ name, initialPosition, onOpen }: DesktopFolderProps) {
-  const { elementRef, handleMouseDown, isDragging, position, zIndex, shouldSuppressClick } = useDraggable<HTMLDivElement>({
-    initialPosition,
-  });
-
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    if (!onOpen) {
-      return;
-    }
-
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      onOpen();
-    }
-  };
-
   return (
-    <div
-      ref={elementRef}
+    <DesktopShortcut
+      name={name}
+      initialPosition={initialPosition}
+      onOpen={onOpen}
       className="desktop-folder"
-      style={{
-        left: `${position.x}px`,
-        top: `${position.y}px`,
-        zIndex,
-      }}
-      onMouseDown={handleMouseDown}
-      onClick={(event) => {
-        if (shouldSuppressClick()) {
-          event.preventDefault();
-          event.stopPropagation();
-          return;
-        }
-
-        onOpen?.();
-      }}
-      onKeyDown={handleKeyDown}
-      role="button"
-      tabIndex={0}
-      aria-label={name}
-      data-dragging={isDragging}
-    >
-      <span className="desktop-folder__icon" aria-hidden="true" />
-      <span className="desktop-folder__name">{name}</span>
-    </div>
+      iconClassName="desktop-folder__icon"
+      nameClassName="desktop-folder__name"
+    />
   );
 }

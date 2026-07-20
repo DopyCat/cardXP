@@ -6,6 +6,7 @@ import { ProfileDetails } from './card/ProfileDetails';
 import { ProfileSidebar } from './card/ProfileSidebar';
 import { socialLinks } from './card/data';
 import { useCardWindowController } from '../hooks/useCardWindowController';
+import { WindowControls } from './window/WindowControls';
 
 type CardWindowProps = {
   zIndex: number;
@@ -46,11 +47,11 @@ export default function CardWindow({
           www.dopycat.com
         </div>
 
-        <div className="title-bar-controls">
-          <button aria-label="Minimize" onClick={onMinimize}></button>
-          <button aria-label="Maximize" onClick={toggleMaximize}></button>
-          <button aria-label="Close" onClick={onClose}></button>
-        </div>
+        <WindowControls
+          onMinimize={onMinimize}
+          onMaximize={toggleMaximize}
+          onClose={onClose}
+        />
       </div>
 
       <div className="window-body">

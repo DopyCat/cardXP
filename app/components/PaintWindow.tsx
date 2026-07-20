@@ -2,7 +2,8 @@
 
 import { useRef, useEffect, useState } from 'react';
 import '../styles/paint-window.css';
-import { useCardWindowController } from '../hooks/useCardWindowController';
+import { useWindowFrame } from '../hooks/useWindowFrame';
+import { WindowControls } from './window/WindowControls';
 
 type PaintWindowProps = {
   zIndex: number;
@@ -17,11 +18,8 @@ export default function PaintWindow({
   onClose,
   onMinimize,
 }: PaintWindowProps) {
-  const {
-    cardWindowRef,
-    toggleMaximize,
-    handleMouseDown,
-  } = useCardWindowController();
+  const cardWindowRef = useRef<HTMLDivElement>(null);
+  const { handleMouseDown, toggleMaximize } = useWindowFrame({ windowRef: cardWindowRef });
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -145,22 +143,11 @@ export default function PaintWindow({
           Paint
         </div>
 
-        <div className="title-bar-controls">
-          <button
-            aria-label="Minimize"
-            onClick={onMinimize}
-          />
-
-          <button
-            aria-label="Maximize"
-            onClick={toggleMaximize}
-          />
-
-          <button
-            aria-label="Close"
-            onClick={onClose}
-          />
-        </div>
+        <WindowControls
+          onMinimize={onMinimize}
+          onMaximize={toggleMaximize}
+          onClose={onClose}
+        />
       </div>
 
       <div className="window-body">

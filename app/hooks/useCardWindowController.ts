@@ -1,26 +1,21 @@
-import { useCallback, useEffect, useRef, type MouseEvent as ReactMouseEvent } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
+
+import { useWindowFrame } from './useWindowFrame';
 
 const BAR_WIDTH = 5;
 const BAR_GAP = 2;
 const MIN_BAR_HEIGHT = 3;
 const BAR_VARIATION = 40;
 
-type DragState = {
-  isDragging: boolean;
-  offsetX: number;
-  offsetY: number;
-};
-
 export function useCardWindowController() {
   const audioRef = useRef<HTMLAudioElement>(null);
   const barsContainerRef = useRef<HTMLDivElement>(null);
   const cardWindowRef = useRef<HTMLDivElement>(null);
-  const dragStateRef = useRef<DragState>({
-    isDragging: false,
-    offsetX: 0,
-    offsetY: 0,
-  });
   const animationFrameRef = useRef<number | null>(null);
+  const {
+    handleMouseDown,
+    toggleMaximize: toggleWindowMaximize,
+  } = useWindowFrame({ windowRef: cardWindowRef });
 
   const generateBars = useCallback(() => {
     const barsContainer = barsContainerRef.current;
@@ -83,60 +78,13 @@ export function useCardWindowController() {
   }, []);
 
   const toggleMaximize = useCallback(() => {
-    const cardWindow = cardWindowRef.current;
-
-    if (!cardWindow) {
-      return;
-    }
-
-    cardWindow.classList.toggle('maximized');
-
-    if (cardWindow.classList.contains('maximized')) {
-      cardWindow.style.left = '';
-      cardWindow.style.top = '';
-      dragStateRef.current.isDragging = false;
-    }
-
+    toggleWindowMaximize();
     requestAnimationFrame(generateBars);
-  }, [generateBars]);
-
-  const handleMouseDown = useCallback((event: ReactMouseEvent) => {
-    const cardWindow = cardWindowRef.current;
-    const target = event.target as HTMLElement | null;
-
-    if (!cardWindow || cardWindow.classList.contains('maximized') || target?.closest('button')) {
-      return;
-    }
-
-    dragStateRef.current.isDragging = true;
-    dragStateRef.current.offsetX = event.clientX - cardWindow.offsetLeft;
-    dragStateRef.current.offsetY = event.clientY - cardWindow.offsetTop;
-    cardWindow.classList.add('dragging');
-  }, []);
+  }, [generateBars, toggleWindowMaximize]);
 
   useEffect(() => {
-    const handleMouseMove = (event: MouseEvent) => {
-      const cardWindow = cardWindowRef.current;
-      const dragState = dragStateRef.current;
-
-      if (!cardWindow || !dragState.isDragging) {
-        return;
-      }
-
-      cardWindow.style.left = `${event.clientX - dragState.offsetX}px`;
-      cardWindow.style.top = `${event.clientY - dragState.offsetY}px`;
-    };
-
-    const handleMouseUp = () => {
-      const cardWindow = cardWindowRef.current;
-      dragStateRef.current.isDragging = false;
-      cardWindow?.classList.remove('dragging');
-    };
-
     window.addEventListener('load', generateBars);
     window.addEventListener('resize', generateBars);
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseup', handleMouseUp);
 
     const resizeObserver = new ResizeObserver(generateBars);
 
@@ -149,8 +97,6 @@ export function useCardWindowController() {
     return () => {
       window.removeEventListener('load', generateBars);
       window.removeEventListener('resize', generateBars);
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseup', handleMouseUp);
       resizeObserver.disconnect();
 
       if (animationFrameRef.current !== null) {
